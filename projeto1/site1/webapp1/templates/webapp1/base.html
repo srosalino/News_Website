@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title> Noticiário </title>
+    </head>
+    <body>
+        <h1> Notícias ao minuto </h1>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div align="center">
+            <a href= "{% url 'noticias' %}"> <button style="background-color: #ffffff; border-color: #499FA4;
+                                                   border-radius: 5px; padding: 13px;margin-bottom: 10px;">
+            <b style="color:#499FA4;" > Visitar a página principal </b> </button> </a>
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title> Notícias ao minuto </title>
+</head>
+<body>
+
+{% if noticias %}
+    <table align="center">
+        {% for noticia in noticias %}
+            <tr>
+                <td>
+                <button class="botoes_noticias" onclick="window.location.href='/webapp1/site_noticia/{{ noticia.id }}'">
+                    <b style="color:#499FA4;" > {{ noticia.titulo_noticia }} </b>
+                </button>
+                </td>
+                <td> <img src="{{noticia.imagem.url}}" width="200px"/> </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% else %}
+    <p> Não existem notícias </p>
+{% endif %}
+
+</body>
+</html>
+
+<style>
+    .botoes_noticias {
+        background-color: #ffffff;
+        border-color: #499FA4;
+        border-radius: 5px;
+        padding: 13px;
+        margin-bottom: 10px;
+    }
+</style>

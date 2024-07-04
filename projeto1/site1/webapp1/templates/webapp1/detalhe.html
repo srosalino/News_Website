@@ -1,0 +1,49 @@
+{% extends "../registration/menu_autenticacao.html" %}
+
+{% block content %}
+
+<table width="100%">
+    <tr>
+        <td></td>
+        <td width="70%"><h1>Notícias ao minuto</h1></td>
+    </tr>
+</table>
+
+{% if Noticia.id != 0 %}
+    <table align="center">
+        <tr><th> Titulo </th><td>{{Noticia.titulo_noticia}}</td></tr>
+        <tr><th> Editor </th><td>{{Noticia.editor}}</td></tr>
+        <tr><th> Texto da notícia </th><td>{{Noticia.texto_noticia}}</td></tr>
+        <tr><th> Data </th><td>{{Noticia.data_noticia}}</td></tr>
+    </table>
+
+{% else %}
+    <p> Não existe notícia </p>
+{% endif %}
+
+    <br>
+    <h3>Comentários:</h3>
+    {% if comentarios %}
+        {% for comentario in comentarios %}
+            <table>
+                <tr>
+                <th>{{comentario.nome_utilizador}}<th>
+                <td>{{comentario.texto_comentario}}</td>
+                </tr>
+            </table>
+        {% endfor %}
+    {% endif %}
+
+        {% if user.is_authenticated %}
+            <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="autor_comentario" value="{{ user.get_username }}" />
+                        <label for="comentario"> Insira o seu comentário: </label>
+                        <input type="text" min="0" max="200" id="comentario" name="comentario" class="c1" />
+                        <input type="submit" value="Submeter comentário" />
+            </form>
+        {% endif %}
+
+{% endblock %}
+
+
